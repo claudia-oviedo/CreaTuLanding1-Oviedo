@@ -1,47 +1,74 @@
 // src/components/NavBar.jsx
+
 import React from 'react';
-// ➡️ CORRECCIÓN: Ruta relativa para CartWidget
-import CartWidget from './CartWidget.jsx';; 
+import CartWidget from './CartWidget.jsx'; 
 
-const NavBar = () => {
-  // Estilos básicos para la demostración y branding de Kadull
-  const navStyle = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '10px 20px',
-    backgroundColor: '#005f73', // Un color de agua o mar profundo, por ejemplo
-    color: 'white',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  };
+// Colores del tema:
+const COLOR_ARENA = '#F7E9C8'; 
+const COLOR_ACENTO = '#A5465C'; 
 
-  const linkStyle = {
-    color: 'white',
-    textDecoration: 'none',
-    margin: '0 15px',
-    fontWeight: '500',
-  };
+const NavBar = ({ cartItemCount }) => {
+    
+    // Estilos de la barra nav
+    const navStyle = {
+        backgroundColor: COLOR_ARENA, 
+        color: COLOR_ACENTO, 
+        padding: '10px 20px', 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+    };
+    
+    // Estilo para el cont del logo
+    const logoContainerStyle = {
+        display: 'flex',
+        alignItems: 'center',
+        textDecoration: 'none',
+    };
 
-  return (
-    <header style={navStyle}>
-      
-      {/* 👑 LOGO: Utilizando el nombre "Kadull" 👑 */}
-      <div style={{ fontSize: '1.8rem', fontWeight: 'bold', letterSpacing: '2px', cursor: 'pointer' }}>
-        KADULL
-      </div>
+    
+    const logoImageStyle = {
+        height: '120px', 
+        width: 'auto', 
+        marginRight: '10px',
+    };
 
-      {/* Enlaces de navegación específicos para trajes de baño */}
-      <nav>
-        <a href="#inicio" style={linkStyle}>Inicio</a>
-        <a href="#bikinis" style={linkStyle}>Bikinis</a>
-        <a href="#enteras" style={linkStyle}>Enteras</a>
-        <a href="#accesorios" style={linkStyle}>Accesorios</a>
-      </nav>
-
-      {/* Widget del carrito de compras (Componente anidado) */}
-      <CartWidget /> 
-    </header>
-  );
+   
+    const linkStyle = {
+        color: COLOR_ACENTO, 
+        textDecoration: 'none',
+        padding: '5px 10px',
+        fontWeight: 'bold'
+    };
+    
+    return (
+        <nav style={navStyle}>
+            {/* INICIO: CONTENEDOR DEL LOGO  */}
+            <a href="/" style={logoContainerStyle}>
+                
+                {/* LOGO */}
+                <img 
+                    src="/kadull_logo.png" 
+                    alt="KADULL - Moda de Playa" 
+                    style={logoImageStyle} 
+                />
+            </a>
+            {/*  LOGO */}
+            
+            {/* ENLACES NAV */}
+            <div style={{ display: 'flex', gap: '20px' }}>
+                <a href="#" style={linkStyle}>Inicio</a>
+                <a href="#" style={linkStyle}>Bikinis</a>
+                <a href="#" style={linkStyle}>Enteras</a>
+                <a href="#" style={linkStyle}>Accesorios</a>
+            </div>
+            
+            {/* CART WIDGET*/}
+            <CartWidget count={cartItemCount} color={COLOR_ACENTO} /> 
+            
+        </nav>
+    );
 };
 
 export default NavBar;

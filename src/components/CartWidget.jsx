@@ -1,12 +1,31 @@
 // src/components/CartWidget.jsx
+
 import React from 'react';
 
-// Se puede usar un icono de librería o un simple emoji
-const CartWidget = () => {
+const CartWidget = ({ count }) => {
   return (
-    <div style={{ fontSize: '1.5rem', cursor: 'pointer' }}>
-      🛒 <span style={{ fontSize: '0.8rem', verticalAlign: 'top' }}>0</span>
-      {/* El '0' representa la cantidad de ítems en el carrito */}
+    <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        fontSize: '1.2em', 
+        color: 'white',
+        cursor: 'pointer'
+    }}>
+      {/* Icono de Carritoo}
+      <span role="img" aria-label="shopping cart" style={{ fontSize: '1.5em' }}>
+        🛒
+      </span>
+      {/* Cont Items */}
+      <span style={{ 
+        marginLeft: '5px', 
+        backgroundColor: 'black', 
+        borderRadius: '50%', 
+        padding: '2px 8px', 
+        fontSize: '0.8em',
+        fontWeight: 'bold'
+      }}>
+        {count}
+      </span>
     </div>
   );
 };
